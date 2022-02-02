@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
@@ -40,6 +42,14 @@ class Project
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
     private $category;
+
+    #[ORM\ManyToMany(targetEntity: CodeLanguage::class, inversedBy: 'projects')]
+    private $codeLanguage;
+
+    public function __construct()
+    {
+        $this->codeLanguage = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -150,6 +160,30 @@ class Project
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CodeLanguage[]
+     */
+    public function getCodeLanguage(): Collection
+    {
+        return $this->codeLanguage;
+    }
+
+    public function addCodeLanguage(CodeLanguage $codeLanguage): self
+    {
+        if (!$this->codeLanguage->contains($codeLanguage)) {
+            $this->codeLanguage[] = $codeLanguage;
+        }
+
+        return $this;
+    }
+
+    public function removeCodeLanguage(CodeLanguage $codeLanguage): self
+    {
+        $this->codeLanguage->removeElement($codeLanguage);
 
         return $this;
     }
