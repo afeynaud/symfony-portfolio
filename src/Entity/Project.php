@@ -37,6 +37,10 @@ class Project
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updatedAt;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +138,18 @@ class Project
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
