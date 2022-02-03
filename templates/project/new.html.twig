@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {% endblock %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-light">Ajouter un projet</h1>
+        {{ form_start(form) }}
+        <form>
+            {{ form_widget(form) }}
+            <button class="btn">OK</button>
+            {{ form_end(form) }}
+        </form>
+    </div>
+{% endblock %}

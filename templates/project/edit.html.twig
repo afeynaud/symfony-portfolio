@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer son projet{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <div class="container w-50">
+        <h1 class="text-light">Éditer son projet</h1>
+
+        {{ include('project/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('project_show', {id: project.id}) }}">Revenir à ses projets</a>
+    </div>
+
+{% endblock %}
