@@ -6,11 +6,11 @@
     <div class="container admin">
         <div class='row'>
             <div class='col'>
-                <h1>Administration</h1>
+                <h1 class='mt-5 mb-3'>Administration</h1>
 
-                <h2>Projets</h2>
+                <h2 class='mb-3'>Projets</h2>
                 {% for project in projects %}
-                    <table>
+                    <table class='mb-1'>
                         <tr>
                             <td class='table-col-80'>{{ project.title }}</td>
                             <td class='table-col-10 text-center'>
@@ -28,9 +28,9 @@
                 {% endfor %}
                 <a href="{{ path('project_new') }}">Créer un nouveau projet</a>
 
-                <h2>Catégories</h2>
+                <h2 class='mb-3 mt-5'>Catégories</h2>
                 {% for category in categories %}
-                    <table>
+                    <table class='mb-1'>
                         <tr>
                             <td class='table-col-80'>{{ category.name }}</td>
                             <td class='table-col-10 text-center'>
@@ -48,9 +48,9 @@
                 {% endfor %}
                 <a href="{{ path('admin_category_new') }}">Créer une nouvelle catégorie</a>
 
-                <h2>Languages informatiques</h2>
+                <h2 class='mb-3 mt-5'>Languages informatiques</h2>
                 {% for code_language in code_languages %}
-                    <table>
+                    <table class='mb-1'>
                         <tr>
                             <td class='table-col-80'>{{ code_language.name }}</td>
                             <td class='table-col-10 text-center'>

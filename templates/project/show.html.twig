@@ -3,18 +3,22 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container project">
         <div class='row'>
             <div class='col'>
-                <h1>{{ project.title }}</h1>
-                <img src='{{ project.showcaseImage }}' alt=''>
-                <p>{{ project.projectDate|date("d/m/Y") }}</p>
+                <h1 class='mt-5 mb-5'>{{ project.title }}</h1>
+                <div>
+                    <img class="showcase-img" src="{{ project.showcaseImage }}" alt=''>
+                </div>
+                <p>{{ project.projectDate|format_datetime('full', 'none', locale='fr')|capitalize }}</p>
                 <p>{{ project.category.name }}</p>
+                <div class="d-flex flex-row mb-3">
                 {% for codeLanguage in project.codeLanguage %}
-                    {{ codeLanguage.name }}
+                    <div class='project-tag'>{{ codeLanguage.name }}</div>
                 {% endfor %}
-                <p>{{ project.applicationUrl }}</p>
-                <p>{{ project.githubUrl }}</p>
+                </div>
+                <a href='{{ project.applicationUrl }}'><i class="fas fa-globe"></i></a>
+                <a href='{{ project.githubUrl }}'><i class="fab fa-github"></i></a>
                 <p>{{ project.description }}</p>
             </div>
         </div>

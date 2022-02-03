@@ -25,7 +25,7 @@ class Project
     private string $showcaseImage;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private ?\DateTimeInterface $projectDate = null;
+    private ?\DateTime $projectDate = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $applicationUrl = null;
@@ -92,12 +92,12 @@ class Project
         return $this;
     }
 
-    public function getProjectDate(): ?\DateTimeInterface
+    public function getProjectDate(): ?\DateTime
     {
         return $this->projectDate;
     }
 
-    public function setProjectDate(?\DateTimeInterface $projectDate): self
+    public function setProjectDate(?\DateTime $projectDate): self
     {
         $this->projectDate = $projectDate;
 

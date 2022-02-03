@@ -35,6 +35,7 @@ class ProjectType extends AbstractType
             ->add('description', TextareaType::class , [
                 'attr' => [
                     'placeholder' => 'Description du projet',
+                    'class' => 'form-textarea',
                 ],
                 'label' => false,
             ])
