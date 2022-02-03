@@ -21,6 +21,7 @@ class ProjectController extends AbstractController
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $project->setCreatedAt(new \DateTime('now'));
             $entityManager = $managerRegistry->getManager();
             $entityManager->persist($project);
             $entityManager->flush();
@@ -47,6 +48,7 @@ class ProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $project->setUpdatedAt(new \DateTime('now'));
             $entityManager->persist($project);
             $entityManager->flush();
             return $this->redirectToRoute('project_show', ['id' => $project->getId()], Response::HTTP_SEE_OTHER);

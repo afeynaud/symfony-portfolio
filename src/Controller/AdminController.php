@@ -20,9 +20,18 @@ class AdminController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ManagerRegistry $managerRegistry): Response
     {
-        $projects = $managerRegistry->getRepository(Project::class)->findAll();
-        $categories = $managerRegistry->getRepository(Category::class)->findAll();
-        $codeLanguages = $managerRegistry->getRepository(CodeLanguage::class)->findAll();
+        $projects = $managerRegistry
+            ->getRepository(Project::class)
+            ->findAll();
+
+        $categories = $managerRegistry
+            ->getRepository(Category::class)
+            ->findAll();
+
+        $codeLanguages = $managerRegistry
+            ->getRepository(CodeLanguage::class)
+            ->findAll();
+
         return $this->render('admin/index.html.twig', [
             'projects' => $projects,
             'categories' => $categories,

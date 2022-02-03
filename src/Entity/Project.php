@@ -13,38 +13,38 @@ class Project
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    private string $title;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $description;
+    private ?string $description = null;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $showcaseImage;
+    private string $showcaseImage;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $projectDate;
+    private ?\DateTimeInterface $projectDate = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $applicationUrl;
+    private ?string $applicationUrl = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $githubUrl;
+    private ?string $githubUrl = null;
 
     #[ORM\Column(type: 'datetime')]
-    private $createdAt;
+    private \DateTimeInterface $createdAt;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $updatedAt;
+    private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'projects')]
     #[ORM\JoinColumn(nullable: false)]
-    private $category;
+    private Category $category;
 
     #[ORM\ManyToMany(targetEntity: CodeLanguage::class, inversedBy: 'projects')]
-    private $codeLanguage;
+    private Collection $codeLanguage;
 
     public function __construct()
     {
