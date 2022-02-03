@@ -1,0 +1,43 @@
+.admin {
+  .fa-btn {
+    border: 0;
+    background-color: #00000000;
+    font-size: 24px;
+    padding: 0;
+  }
+
+  .btn-fa-edit:hover {
+    color: green;
+  }
+
+  .btn-fa-delete:hover {
+    color: red;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #000000;
+    border-collapse: collapse;
+    padding-left: 5px;
+  }
+
+  table {
+    width: 30%;
+  }
+
+  table.fixed {
+    table-layout: fixed;
+  }
+  table.fixed td {
+    overflow: hidden;
+  }
+
+  .table-col-80 {
+    width: 80%;
+  }
+
+  .table-col-10 {
+    width: 10%;
+  }
+}

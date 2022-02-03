@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class='row'>
+            <div class='col'>
+                <h1>Administration</h1>
+                <h2>Projets</h2>
+                <h2>Catégories</h2>
+                {% for category in categories %}
+                    <table>
+                        <tr>
+                            <td class='table-col-80'>{{ category.name }}</td>
+                            <td class='table-col-10 text-center'>
+                                <a href='{{ path('admin_category_edit', {'id': category.id}) }}'>
+                                    <button class="fa-btn">
+                                        <i class="fas fa-edit btn-fa-edit"></i>
+                                    </button>
+                                </a>
+                            </td>
+                            <td class='table-col-10 text-center'>
+                                {{ include('admin/category/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    </table>
+                {% endfor %}
+                <a href="{{ path('admin_category_new') }}">Créer une nouvelle catégorie</a>
+                <h2>Languages informatiques</h2>
+                {% for code_language in code_languages %}
+                    <table>
+                        <tr>
+                            <td class='table-col-80'>{{ code_language.name }}</td>
+                            <td class='table-col-10 text-center'>
+                                <a href='{{ path('admin_code_language_edit', {'id': code_language.id}) }}'>
+                                    <button class="fa-btn">
+                                        <i class="fas fa-edit btn-fa-edit"></i>
+                                    </button>
+                                </a>
+                            </td>
+                            <td class='table-col-10 text-center'>
+                                {{ include('admin/code_language/_delete_form.html.twig') }}
+                            </td>
+                        </tr>
+                    </table>
+                {% endfor %}
+                <a href="{{ path('admin_code_language_new') }}">Ajouter un nouveau langage informatique</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

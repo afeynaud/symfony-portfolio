@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition langage informatique - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Éditer le langage informatique</h1>
+
+        {{ include('admin/code_language/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <a href="{{ path('admin_index') }}">Retour à l'administration</a>
+
+        {{ include('admin/code_language/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

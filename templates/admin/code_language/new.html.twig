@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout langage informatique - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Ajouter un nouveau langage informatique</h1>
+
+        {{ include('admin/code_language/_form.html.twig') }}
+
+        <a href="{{ path('admin_index') }}">Retour à l'administration</a>
+    </div>
+{% endblock %}
