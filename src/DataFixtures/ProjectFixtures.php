@@ -28,7 +28,7 @@ class ProjectFixtures extends Fixture
             expérience chez ConcoursMania dans le but d\'apprendre à créer des sites internet sous Wordpress.',
             'showcaseImage' => 'https://cdna.artstation.com/p/assets/images/images/045/918/874/large/jordan-grimmer-fdb89iyxmamkple-1.jpg?1643846354',
             'projectDate' => '2020-06-02',
-            'applicationUrl' => '',
+            'applicationUrl' => null,
             'githubUrl' => 'https://github.com/afeynaud/site-afeynaud',
             'category' => 'Développement web',
             'codeLanguages' => ['PHP','JS','Vue'],

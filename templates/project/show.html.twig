@@ -1,24 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ parent() }}{% endblock %}
+{% block meta_description %}{{ project.title }}{% endblock %}
 
 {% block body %}
     <div class="container project">
         <div class='row'>
             <div class='col'>
                 <h1 class='mt-5 mb-5'>{{ project.title }}</h1>
-                <div>
+
+                <div class="img-align">
                     <img class="showcase-img" src="{{ project.showcaseImage }}" alt=''>
                 </div>
+
                 <p>{{ project.projectDate|format_datetime('full', 'none', locale='fr')|capitalize }}</p>
                 <p>{{ project.category.name }}</p>
+
                 <div class="d-flex flex-row mb-3">
-                {% for codeLanguage in project.codeLanguage %}
-                    <div class='project-tag'>{{ codeLanguage.name }}</div>
-                {% endfor %}
+                    {% for codeLanguage in project.codeLanguage %}
+                        <div class='project-tag'>{{ codeLanguage.name }}</div>
+                    {% endfor %}
                 </div>
-                <a href='{{ project.applicationUrl }}'><i class="fas fa-globe"></i></a>
-                <a href='{{ project.githubUrl }}'><i class="fab fa-github"></i></a>
+
+                {% if project.applicationUrl is null %}
+                {% else %}
+                    <a class='fa-links-icons' href='{{ project.applicationUrl }}' target='_blank'><i class="fas fa-globe"></i></a>
+                {% endif %}
+
+                {% if project.githubUrl is null %}
+                {% else %}
+                    <a class='fa-links-icons' href='{{ project.githubUrl }}' target='_blank'><i class="fab fa-github"></i></a>
+                {% endif %}
+
                 <p>{{ project.description }}</p>
             </div>
         </div>

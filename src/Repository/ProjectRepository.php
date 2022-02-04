@@ -19,6 +19,31 @@ class ProjectRepository extends ServiceEntityRepository
         parent::__construct($registry, Project::class);
     }
 
+    /**
+     * @return Project[] Returns an array of JobOffer objects
+     */
+    public function findWithFilters(array $filters): array
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->andWhere('p.title LIKE :title')
+            ->setParameter('title', '%' . $filters['title'] . '%');
+
+        if (isset($filters['category'])) {
+            $qb
+                ->andWhere('p.categoryName IN (:name)')
+                ->setParameter('name', $filters['category']);
+        }
+
+        if (isset($filters['codeLanguage'])) {
+            $qb
+                ->andWhere('p.codeLanguageName IN (:name)')
+                ->setParameter('name', $filters['codeLanguage']);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Project[] Returns an array of Project objects
     //  */

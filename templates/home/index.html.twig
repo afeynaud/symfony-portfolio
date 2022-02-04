@@ -1,12 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ parent() }}{% endblock %}
+{% block meta_description %}{{ parent() }}{% endblock %}
+
+{% block javascripts %}
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "Person",
+            "name": "Alexandre Feynaud",
+            "nationality": "French",
+            "gender": "Male",
+            "url": "https://alexandrefeynaud.com",
+            "jobTitle": "Développeur web PHP, React, Vue, Symfony, Wordpress",
+            "sameAs": [
+                "https://www.linkedin.com/in/alexandrefeynaud",
+                "https://www.instagram.com/afeynaud",
+                "https://www.artstation.com/afeynaud",
+                "https://github.com/afeynaud"
+            ],
+            "alumniOf": [
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Wild Code School",
+                    "sameAs": "https://fr.wikipedia.org/wiki/Wild_Code_School"
+                },
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "INSEEC U",
+                    "sameAs": "https://fr.wikipedia.org/wiki/INSEEC_U."
+                },
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "IUT Bordeaux Montaigne",
+                    "sameAs": "https://fr.wikipedia.org/wiki/Institut_universitaire_de_technologie_Bordeaux_Montaigne"
+                },
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "GRETA",
+                    "sameAs": "https://fr.wikipedia.org/wiki/Greta_(enseignement)"
+                },
+                {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Lycée Les Iris",
+                    "sameAs": "https://www.lyceelesiris.fr"
+                }
+            ]
+        }
+    </script>
+{% endblock %}
 
 {% block body %}
     <div class="container home">
         <div class="row">
             <div class="col">
                 <h1 class="mt-5 mb-5">Bienvenue dans mon portfolio</h1>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+                {{ form_end(form) }}
                 <div class="row">
                     {% for project in projects %}
                         <div class="col d-flex justify-content-center">
